@@ -104,25 +104,45 @@ function ClearStatusClass(element){
 }
 const questions = [
     {
-        question: 'What is 2 + 2?', 
+        question: 'Which of the following type of variable is visible everywhere in your JavaScript code?', 
         answers: [
-            {text: '4', correct: true},
-            {text: '22', correct: false},
-            {text: '4', correct: true},
-            {text: '22', correct: false}
+            {text: 'local variable', correct: false},
+            {text: 'global variable', correct: true},
+            {text: 'Both of the above', correct: false},
+            {text: 'None of the above', correct: false}
         ]
     },
     {
-        question: 'What is 2 + 3?', 
+        question: 'Which built-in method calls a function for each element in the array?', 
         answers: [
-            {text: '4', correct: true},
-            {text: '22', correct: false},
-            {text: '4', correct: true},
-            {text: '22', correct: false}
+            {text: 'whole()', correct: false},
+            {text: 'loop()', correct: false},
+            {text: 'forEach()', correct: true},
+            {text: 'None of the above', correct: false}
+        ]
+
+    },
+    {
+        question: 'Which of the following function of Number object forces a number to display in exponential notation?', 
+        answers: [
+            {text: 'toExponential()', correct: true},
+            {text: 'toFixed()', correct: false},
+            {text: 'toPercision()', correct: false},
+            {text: 'toLocaleString()', correct: false}
+        ]
+
+    },
+    {
+        question: 'Which of the following function of Boolean object returns the primitive value of the Boolean object?', 
+        answers: [
+            {text: 'toSource', correct: false},
+            {text: 'toValueOf()', correct: true},
+            {text: 'toString()', correct: false},
+            {text: 'None of the Above', correct: false}
         ]
 
     }
 ]
 addUser.addEventListener("submit", function(event) {
-    localStorage.removeItem("count");
+    localStorage.removeItem("count", count);
 });
