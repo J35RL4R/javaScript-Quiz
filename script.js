@@ -1,60 +1,48 @@
-const startButton = document.querySelector('#start-btn')
-const nextButton = document.querySelector('#next-btn')
-const questionContainer = document.querySelector('#question-container')
-const questionElement = document.querySelector('#question')
-const answerButtons = document.querySelector('#answer-buttons')
-
-var counter = document.querySelector('#current-score')
-var timer = document.querySelector('#timer')
+const startButton = document.querySelector('#start-btn');
+const nextButton = document.querySelector('#next-btn');
+const questionContainer = document.querySelector('#question-container');
+const questionElement = document.querySelector('#question');
+const answerButtons = document.querySelector('#answer-buttons');
+var addUser = document.querySelector('#user-name');
+var counter = document.querySelector('#current-score');
+var timer = document.querySelector('#timer');
 var count = localStorage.getItem("count");
-
+var highScore = document.querySelector('#high-score');
 
 counter.textContent = count;
-
+highScore.textContent = addUser;
 let shuffledQuestions, currentQuestionIndex
 
 startButton.addEventListener('click', startGame);
-
 
 nextButton.addEventListener('click', () => {
     currentQuestionIndex++
     setNextQuestion()
 });
 
-function qtimer() {
-    var fiveMinutes = 60 * 5,
-    display = document.querySelector('#timer');
 
-    startTimer(fiveMinutes, display);
-}
-
-
-function startTimer(duration, display) {
-    var timer = duration, minutes, seconds;
-
-    myInterval = setInterval(function () {
-        minutes = parseInt(timer / 60, 10)
-        seconds = parseInt(timer % 60, 10);
-
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-        display.textContent = 'Time Left ' + minutes + ":" + seconds;
-
-        if (--timer < 0) {
-            clearInterval(myInterval);
-            doneFunction();
-        }
+function MyTimer(callback, val) {
+    val = val || 60; 
+    var timer=setInterval(function() { 
+        callback(val);
+        if(val-- <= 0) { 
+            clearInterval(timer);
+            alert('TIME IS UP!!!'); 
+        } 
     }, 1000);
 }
+new MyTimer(function(val) {
+    var timerMsg = "00:" + (val >= 10 ? val : "0" + val);
+    document.getElementById("timer").textContent = timerMsg; 
+});
+
 function startGame() {
     startButton.classList.add('hide');
     questionContainer.classList.remove('hide');
+    addUser.classList.add('hide')
     shuffledQuestions = questions.sort(() => Math.random() - .5);
     currentQuestionIndex = 0;
     setNextQuestion();
-    qtimer();
-    startTimer();
   
 }
 
@@ -73,16 +61,16 @@ function showQuestion(question){
         if(answer.correct){
             button.dataset.correct = answer.correct
         };
-        button.addEventListener('click', selectAnswer)
-        answerButtons.appendChild(button)
+        button.addEventListener('click', selectAnswer);
+        answerButtons.appendChild(button);
     });
 }
 function resetState(){
-    nextButton.classList.add('hide')
+    nextButton.classList.add('hide');
     while (answerButtons.firstChild){
-        answerButtons.removeChild(answerButtons.firstChild)    
+        answerButtons.removeChild(answerButtons.firstChild);  
     }
-    ClearStatusClass(document.body)
+    ClearStatusClass(document.body);
 }
 function selectAnswer(e){
     const selectedButton = e.target
@@ -94,8 +82,7 @@ function selectAnswer(e){
     if(shuffledQuestions.length > currentQuestionIndex + 1) {
         nextButton.classList.remove('hide');
     } else {
-        startButton.innerText = 'Restart';
-        startButton.classList.remove('hide');
+        addUser.classList.remove('hide') 
     }
     if(correct){
         count++;
@@ -106,14 +93,14 @@ function selectAnswer(e){
 function setStatusClass(element, correct){
     ClearStatusClass(element)
     if (correct){
-        element.classList.add('correct')
+        element.classList.add('correct');
     } else {
-        element.classList.add('wrong')
+        element.classList.add('wrong');
     }
 }
 function ClearStatusClass(element){
-    element.classList.remove('correct')
-    element.classList.remove('wrong')
+    element.classList.remove('correct');
+    element.classList.remove('wrong');
 }
 const questions = [
     {
@@ -136,4 +123,6 @@ const questions = [
 
     }
 ]
-
+addUser.addEventListener("submit", function(event) {
+    localStorage.removeItem("count");
+});
