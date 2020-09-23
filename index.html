@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>JavaScript Quiz</title>
+</head>
+<body>
+<div class = 'header'>
+    <div class ='row'>
+        <div class = 'col-md-3'>
+            <span id = 'high-score'>Highscore Sample Text</span>
+            <span id = 'current-score'>score Sample Text</span>
+        </div>
+        <div class = 'col-md-6'>
+            <h1>The JavaScript Quiz!</h1>
+        </div>
+        <div class = 'col-md-3'>
+            <span id = 'timer'></span>
+        </div>
+    </div>
+</div>
+<div class ='row'>    
+    <div class= 'container'>
+        <form id="user-name" method="POST">
+            <input type="text" placeholder="Enter name" id="input"  class = 'hide' />
+        </form>
+        <div id='question-container' class='hide'>
+            <div id='question'>Sample Question</div>
+            <div id='answer-buttons' class='btn-grid'>
+                <button class='btn btn-outline-light'>Sample Answer1</button>
+                <button class='btn btn-outline-light'>Sample Answer2</button>
+                <button class='btn btn-outline-light'>Sample Answer3</button>
+                <button class='btn btn-outline-light'>Sample Answer4</button>
+            </div>
+        </div>
+            <div class='controls'>
+                <button id = 'start-btn' class='start-btn btn btn-outline-light'>Start</button>
+                <button id = 'next-btn' class='next-btn btn btn-outline-light hide'>Next</button>
+            </div>
+    </div>
+</div>
+<script src="script.js"></script> 
+</body>
+</html>

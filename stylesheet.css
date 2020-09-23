@@ -1,0 +1,78 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+:root{
+    --hue-neutral: 200;
+    --hue-wrong: 0;
+    --hue-correct: 145;
+} 
+
+body {
+    --hue: var(--hue-neutral);
+    background-color: hsl(var(--hue), 100%, 20%);
+}
+
+body.correct{
+    --hue: var(--hue-correct);
+}
+
+body.wrong{
+    --hue: var(--hue-wrong);
+}
+
+.header{
+    
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center;
+    color: white;
+}
+.container{
+    width: 800px;
+    max-width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 3px;
+}
+
+form{
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center;
+}
+.btn-grid {
+display: grid;
+grid-template-columns: repeat(2, auto);
+gap: 10px;
+margin: 20px 0;
+}
+.btn {
+    --hue: var(--hue-neutral);
+    border: 1px soild hsl(var(--hue), 100%,30%);
+    background-color: hsl(var(--hue), 100%, 50%);
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+.btn.correct {
+    --hue: var(--hue-correct);
+}
+.btn.wrong {
+    --hue: var(--hue-wrong);
+}
+.start-btn, .next-btn {
+    font-size: 36px;
+    font-weight: bolder;
+    padding: 5px, 10px
+}
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hide{
+    display: none
+}
